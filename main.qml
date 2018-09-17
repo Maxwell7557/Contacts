@@ -10,7 +10,7 @@ Window
     height: 480
     title: qsTr("Hello World")
 
-    property int indexx: 0
+    property int currentIndex: 0
 
     ListModel
     {
@@ -78,12 +78,12 @@ Window
                     onClicked:
                     {
                         name.text = firstName
-                        sure_name.text = lastName
+                        sureName.text = lastName
                         number.text = phoneNumber
 
                         add.text = "Редактировать"
 
-                        indexx = index
+                        currentIndex = index
                     }
                 }
             }
@@ -126,7 +126,7 @@ Window
 
         Text
         {
-            id: lable_1
+            id: nameLable
             text: "Имя:"
 
             anchors.top: parent.top
@@ -138,9 +138,9 @@ Window
             width: parent.width
             height: 20
 
-            anchors.top: lable_1.bottom
+            anchors.top: nameLable.bottom
 
-            id: field_1
+            id: nameField
 
             radius: 7
             border.color: "black"
@@ -158,10 +158,10 @@ Window
 
         Text
         {
-            id: lable_2
+            id: lastNameLable
             text: "Фамилия:"
 
-            anchors.top: field_1.bottom
+            anchors.top: nameField.bottom
             anchors.left: parent.left
         }
 
@@ -170,16 +170,16 @@ Window
             width: parent.width
             height: 20
 
-            anchors.top: lable_2.bottom
+            anchors.top: lastNameLable.bottom
 
-            id: field_2
+            id: lastNamefield
 
             radius: 7
             border.color: "black"
 
             TextEdit
             {
-                id: sure_name
+                id: sureName
 
                 anchors.left: parent.left
                 anchors.leftMargin: 5
@@ -190,10 +190,10 @@ Window
 
         Text
         {
-            id: lable_3
+            id: phoneNumberLable
             text: "Номер телефона:"
 
-            anchors.top: field_2.bottom
+            anchors.top: lastNamefield.bottom
             anchors.left: parent.left
         }
 
@@ -202,9 +202,9 @@ Window
             width: parent.width
             height: 20
 
-            anchors.top: lable_3.bottom
+            anchors.top: phoneNumberLable.bottom
 
-            id: field_3
+            id: phoneNumberField
 
             radius: 7
             border.color: "black"
@@ -224,27 +224,27 @@ Window
         {
             id: add
             anchors.right: parent.right
-            anchors.top: field_3.bottom
+            anchors.top: phoneNumberField.bottom
 
             text: "Добавить"
 
             onClicked: if (text == "Добавить")
                              {
                                 contacts.append({"firstName":name.text,
-                                              "lastName":sure_name.text,
+                                              "lastName":sureName.text,
                                               "phoneNumber":number.text })
                                 name.text = "Введите имя."
-                                sure_name.text = "Введите фамилию."
+                                sureName.text = "Введите фамилию."
                                 number.text = "Введите номер."
                              }
                         else
                              {
-                                contacts.set(indexx, {"firstName":name.text,
-                                              "lastName":sure_name.text,
+                                contacts.set(currentIndex, {"firstName":name.text,
+                                              "lastName":sureName.text,
                                               "phoneNumber":number.text })
                                 add.text = "Добавить"
                                 name.text = "Введите имя."
-                                sure_name.text = "Введите фамилию."
+                                sureName.text = "Введите фамилию."
                                 number.text = "Введите номер."
                              }
          }
