@@ -149,12 +149,14 @@ Window
             {
                 id: name
 
-                textMargin: 2
+                anchors.left: parent.left
+                anchors.leftMargin: 5
 
-                width: parent.width
+                width: parent.width - 5
                 height: 20
 
                 text: "Введите имя."
+
             }
         }
 
@@ -183,9 +185,10 @@ Window
             {
                 id: sureName
 
-                textMargin: 2
+                anchors.left: parent.left
+                anchors.leftMargin: 5
 
-                width: parent.width
+                width: parent.width - 5
                 height: 20
 
                 text: "Введите фамилию."
@@ -217,9 +220,10 @@ Window
             {
                 id: number
 
-                textMargin: 2
+                anchors.left: parent.left
+                anchors.leftMargin: 5
 
-                width: parent.width
+                width: parent.width - 5
                 height: 20
 
                 text: "Введите номер."
