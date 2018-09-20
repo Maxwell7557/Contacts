@@ -77,9 +77,9 @@ Window
                     anchors.fill: parent
                     onClicked:
                     {
-                        name.text = firstName
-                        sureName.text = lastName
-                        number.text = phoneNumber
+                        nameField.text = firstName
+                        lastNameField.text = lastName
+                        phoneNumberField.text = phoneNumber
 
                         add.text = "Редактировать"
 
@@ -119,7 +119,7 @@ Window
         anchors.rightMargin: 20
 
         width: parent.width / 3
-        height: parent.height / 3
+        height: parent.height / 2.5
 
         color: "skyblue"
         radius: 7
@@ -133,31 +133,17 @@ Window
             anchors.left: parent.left
         }
 
-        Rectangle
+
+        TextField
         {
-            width: parent.width
-            height: 20
+            id: nameField
+
+            placeholderText: "Введите имя."
 
             anchors.top: nameLable.bottom
 
-            id: nameField
-
-            radius: 7
-            border.color: "black"
-
-            TextEdit
-            {
-                id: name
-
-                anchors.left: parent.left
-                anchors.leftMargin: 5
-
-                width: parent.width - 5
-                height: 20
-
-                text: "Введите имя."
-
-            }
+            width: parent.width
+            height: 30
         }
 
         Text
@@ -169,30 +155,16 @@ Window
             anchors.left: parent.left
         }
 
-        Rectangle
+        TextField
         {
-            width: parent.width
-            height: 20
+            id: lastNameField
+
+            placeholderText: "Введите фамилию."
 
             anchors.top: lastNameLable.bottom
 
-            id: lastNamefield
-
-            radius: 7
-            border.color: "black"
-
-            TextEdit
-            {
-                id: sureName
-
-                anchors.left: parent.left
-                anchors.leftMargin: 5
-
-                width: parent.width - 5
-                height: 20
-
-                text: "Введите фамилию."
-            }
+            width: parent.width
+            height: 30
         }
 
         Text
@@ -200,34 +172,21 @@ Window
             id: phoneNumberLable
             text: "Номер телефона:"
 
-            anchors.top: lastNamefield.bottom
+            anchors.top: lastNameField.bottom
             anchors.left: parent.left
         }
 
-        Rectangle
+        TextField
         {
-            width: parent.width
-            height: 20
+            id: phoneNumberField
+
+            placeholderText: "Введите номер."
 
             anchors.top: phoneNumberLable.bottom
 
-            id: phoneNumberField
+            width: parent.width
+            height: 30
 
-            radius: 7
-            border.color: "black"
-
-            TextEdit
-            {
-                id: number
-
-                anchors.left: parent.left
-                anchors.leftMargin: 5
-
-                width: parent.width - 5
-                height: 20
-
-                text: "Введите номер."
-            }
         }
 
         Button
@@ -240,22 +199,22 @@ Window
 
             onClicked: if (text == "Добавить")
                              {
-                                contacts.append({"firstName":name.text,
-                                              "lastName":sureName.text,
-                                              "phoneNumber":number.text })
-                                name.text = "Введите имя."
-                                sureName.text = "Введите фамилию."
-                                number.text = "Введите номер."
+                                contacts.append({"firstName":nameField.text,
+                                              "lastName":lastNameField.text,
+                                              "phoneNumber":phoneNumberField.text })
+                                nameField.text = ""
+                                lastNameField.text = ""
+                                phoneNumberField.text = ""
                              }
                         else
                              {
-                                contacts.set(currentIndex, {"firstName":name.text,
-                                              "lastName":sureName.text,
-                                              "phoneNumber":number.text })
+                                contacts.set(currentIndex, {"firstName":nameField.text,
+                                              "lastName":lastNameField.text,
+                                              "phoneNumber":phoneNumberField.text })
                                 add.text = "Добавить"
-                                name.text = "Введите имя."
-                                sureName.text = "Введите фамилию."
-                                number.text = "Введите номер."
+                                nameField.text = ""
+                                lastNameField.text = ""
+                                phoneNumberField.text = ""
                              }
          }
     }
